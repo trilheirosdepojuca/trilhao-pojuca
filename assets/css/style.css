@@ -1,0 +1,69 @@
+* {
+  border-radius: 20px;
+}
+
+.inscritos-box ul {
+  list-style: none;
+}
+
+.inscritos-box li {
+  padding: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.ranking-grid,
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.ranking-card,
+.sponsor-card {
+  background: #1b1b1b;
+  padding: 35px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.ranking-card span {
+  display: block;
+  margin-top: 15px;
+  color: #00ff95;
+}
+
+.map-box {
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+footer {
+  background: black;
+  padding: 30px;
+  text-align: center;
+  color: #777;
+}
+
+@media(max-width: 768px) {
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 2.8rem;
+  }
+
+  .price-card,
+  .pix-box,
+  .form-box {
+    padding: 30px;
+  }
+
+}
