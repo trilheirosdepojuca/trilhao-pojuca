@@ -2,7 +2,9 @@
 <html lang="pt-BR">
 
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Trilhão de Pojuca</title>
@@ -10,18 +12,27 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
+
+
+  <!-- HERO -->
 
   <header class="hero">
 
     <div class="hero-content">
 
-      <img src="assets/img/logo.png" class="logo">
+      <img
+        src="assets/img/logo.png"
+        class="logo"
+        alt="Logo Trilheiros de Pojuca"
+      >
 
       <p>
         Aventura • Lama • Adrenalina • Resenha
@@ -35,6 +46,8 @@
 
   </header>
 
+
+  <!-- PREÇO -->
 
   <section class="price-section">
 
@@ -59,6 +72,8 @@
   </section>
 
 
+  <!-- CONTADOR -->
+
   <section class="countdown-section">
 
     <div class="container">
@@ -72,6 +87,8 @@
   </section>
 
 
+  <!-- BENEFÍCIOS -->
+
   <section class="benefits">
 
     <div class="container">
@@ -81,13 +98,21 @@
       <div class="grid">
 
         <div class="card">👕🧢 Camisa</div>
+
         <div class="card">🏆 Troféu em resina</div>
+
         <div class="card">☕ Café da manhã</div>
+
         <div class="card">🫗🧊 Água gelada</div>
+
         <div class="card">🌭 Lanche</div>
+
         <div class="card">🍉🍎 2 pontos de apoio</div>
+
         <div class="card">🍝 Almoço</div>
+
         <div class="card">🔧🪛 Apoio na trilha</div>
+
         <div class="card">📸📹 Fotos e vídeos</div>
 
       </div>
@@ -96,6 +121,8 @@
 
   </section>
 
+
+  <!-- FORMULÁRIO -->
 
   <section id="inscricao" class="form-section">
 
@@ -120,6 +147,7 @@
             id="telefone"
             name="telefone"
             placeholder="WhatsApp"
+            maxlength="15"
             required
           >
 
@@ -159,18 +187,25 @@
   </section>
 
 
+  <!-- INSCRITOS -->
+
   <section class="inscritos-section">
 
     <div class="container">
 
       <h2>🔥 Trilheiros Inscritos</h2>
 
-      <div id="lista-inscritos" class="inscritos-grid"></div>
+      <div
+        id="lista-inscritos"
+        class="inscritos-grid"
+      ></div>
 
     </div>
 
   </section>
 
+
+  <!-- PATROCINADORES -->
 
   <section class="sponsors-section">
 
@@ -181,19 +216,39 @@
       <div class="sponsors-grid">
 
         <div class="sponsor-card">
-          <img src="assets/img/patrocinador1.png">
+
+          <img
+            src="assets/img/patrocinador1.png"
+            alt="Patrocinador 1"
+          >
+
         </div>
 
         <div class="sponsor-card">
-          <img src="assets/img/patrocinador2.png">
+
+          <img
+            src="assets/img/patrocinador2.png"
+            alt="Patrocinador 2"
+          >
+
         </div>
 
         <div class="sponsor-card">
-          <img src="assets/img/patrocinador3.png">
+
+          <img
+            src="assets/img/patrocinador3.png"
+            alt="Patrocinador 3"
+          >
+
         </div>
 
         <div class="sponsor-card">
-          <img src="assets/img/patrocinador4.png">
+
+          <img
+            src="assets/img/patrocinador4.png"
+            alt="Patrocinador 4"
+          >
+
         </div>
 
       </div>
@@ -202,6 +257,8 @@
 
   </section>
 
+
+  <!-- CONTATOS -->
 
   <section class="contact-section">
 
@@ -212,27 +269,42 @@
       <div class="contact-grid">
 
         <div class="contact-card">
+
           <h3>Alex Lorenzetti</h3>
 
-          <a href="https://wa.me/5571996285296" target="_blank">
+          <a
+            href="https://wa.me/5571996285296"
+            target="_blank"
+          >
             📱 (71) 99628-5296
           </a>
+
         </div>
 
         <div class="contact-card">
+
           <h3>Halisson Hevelon</h3>
 
-          <a href="https://wa.me/5571996348539" target="_blank">
+          <a
+            href="https://wa.me/5571996348539"
+            target="_blank"
+          >
             📱 (71) 99634-8539
           </a>
+
         </div>
 
         <div class="contact-card">
+
           <h3>Marlon Lima</h3>
 
-          <a href="https://wa.me/5571999110563" target="_blank">
+          <a
+            href="https://wa.me/5571999110563"
+            target="_blank"
+          >
             📱 (71) 99911-0563
           </a>
+
         </div>
 
       </div>
@@ -242,181 +314,18 @@
   </section>
 
 
+  <!-- RODAPÉ -->
+
   <footer>
+
     © 2026 - Trilheiros de Pojuca 🏍️
+
   </footer>
 
 
+  <!-- SCRIPT -->
+
   <script src="assets/js/script.js"></script>
-
-
-  <script type="module">
-
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-
-    import {
-      getFirestore,
-      collection,
-      addDoc,
-      serverTimestamp,
-      onSnapshot,
-      query,
-      orderBy
-    } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
-
-
-    const firebaseConfig = {
-      apiKey: "SUA_API_KEY",
-      authDomain: "trilhao-pojuca.firebaseapp.com",
-      projectId: "trilhao-pojuca",
-      storageBucket: "trilhao-pojuca.firebasestorage.app",
-      messagingSenderId: "288280670772",
-      appId: "SEU_APP_ID"
-    };
-
-
-    const app = initializeApp(firebaseConfig);
-
-    const db = getFirestore(app);
-
-
-    const lista = document.getElementById("lista-inscritos");
-
-    const inscritosRef = query(
-      collection(db, "inscritos"),
-      orderBy("createdAt", "desc")
-    );
-
-
-    onSnapshot(inscritosRef, (snapshot) => {
-
-      lista.innerHTML = "";
-
-      snapshot.forEach((doc) => {
-
-        const data = doc.data();
-
-        lista.innerHTML += `
-
-          <div class="piloto-card">
-
-            <div class="piloto-topo">
-
-              <div class="piloto-avatar">
-                🏍️
-              </div>
-
-              <div class="piloto-info">
-
-                <h3>${data.nome}</h3>
-
-                <span>${data.cidade}</span>
-
-              </div>
-
-            </div>
-
-            <div class="piloto-body">
-
-              <div class="piloto-item">
-                <strong>Moto:</strong>
-                ${data.moto}
-              </div>
-
-              <div class="piloto-item">
-                <strong>Contato:</strong>
-                ${data.telefone}
-              </div>
-
-            </div>
-
-            <div class="piloto-footer">
-
-              <span class="${data.status === 'Pago' ? 'status-pago' : 'status-pendente'}">
-                ${data.status}
-              </span>
-
-            </div>
-
-          </div>
-
-        `;
-
-      });
-
-    });
-
-
-    const form = document.getElementById("form-inscricao");
-
-    form.addEventListener("submit", async (e) => {
-
-      e.preventDefault();
-
-      const nome = document.getElementById("nome").value;
-      const telefone = document.getElementById("telefone").value;
-      const cidade = document.getElementById("cidade").value;
-      const moto = document.getElementById("moto").value;
-      const observacoes = document.getElementById("observacoes").value;
-
-      try {
-
-        const response = await fetch(
-          "https://criarpagamento-c6ftk5nesq-uc.a.run.app",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              nome,
-              telefone,
-              cidade,
-              moto,
-              observacoes
-            })
-          }
-        );
-
-        const data = await response.json();
-
-        if (data.url) {
-
-          await addDoc(collection(db, "inscritos"), {
-
-            nome,
-            telefone,
-            cidade,
-            moto,
-            observacoes,
-
-            status: "Pendente",
-
-            pagamento: "Mercado Pago",
-
-            createdAt: serverTimestamp()
-
-          });
-
-          window.location.href = data.url;
-
-        } else {
-
-          alert("Erro ao gerar pagamento.");
-
-        }
-
-      } catch (error) {
-
-        console.error(error);
-
-        alert("Erro ao processar inscrição.");
-
-      }
-
-    });
-
-  </script>
 
 </body>
 

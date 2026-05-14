@@ -14,8 +14,8 @@ exports.criarPagamento = functions.https.onRequest(async (req, res) => {
 
   // CORS
   res.set(
-    "Access-Control-Allow-Origin",
-    "https://trilheirosdepojuca.github.io"
+  "Access-Control-Allow-Origin",
+  "*"
   );
 
   res.set(
