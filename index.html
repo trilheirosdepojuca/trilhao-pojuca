@@ -1,4 +1,3 @@
-```html id="k7n2vx"
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -294,7 +293,9 @@
       collection,
       addDoc,
       serverTimestamp,
-      onSnapshot
+      onSnapshot,
+      query,
+      orderBy
     } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 
@@ -317,7 +318,13 @@
 
     const lista = document.getElementById("lista-inscritos");
 
-    onSnapshot(collection(db, "inscritos"), (snapshot) => {
+    const inscritosRef = query(
+      collection(db, "inscritos"),
+      orderBy("createdAt", "desc")
+    );
+
+
+    onSnapshot(inscritosRef, (snapshot) => {
 
       lista.innerHTML = "";
 
@@ -327,19 +334,45 @@
 
         lista.innerHTML += `
 
-          <div class="inscrito-card">
+          <div class="piloto-card">
 
-            <h3>${data.nome}</h3>
+            <div class="piloto-topo">
 
-            <p>📍 ${data.cidade}</p>
+              <div class="piloto-avatar">
+                🏍️
+              </div>
 
-            <p>🏍️ ${data.moto}</p>
+              <div class="piloto-info">
 
-            <p>📞 ${data.telefone}</p>
+                <h3>${data.nome}</h3>
 
-            <span class="status ${data.status === 'Pago' ? 'pago' : 'pendente'}">
-              ${data.status}
-            </span>
+                <span>${data.cidade}</span>
+
+              </div>
+
+            </div>
+
+            <div class="piloto-body">
+
+              <div class="piloto-item">
+                <strong>Moto:</strong>
+                ${data.moto}
+              </div>
+
+              <div class="piloto-item">
+                <strong>Contato:</strong>
+                ${data.telefone}
+              </div>
+
+            </div>
+
+            <div class="piloto-footer">
+
+              <span class="${data.status === 'Pago' ? 'status-pago' : 'status-pendente'}">
+                ${data.status}
+              </span>
+
+            </div>
 
           </div>
 
@@ -401,4 +434,3 @@
 </body>
 
 </html>
-```
