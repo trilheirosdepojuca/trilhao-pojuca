@@ -1,79 +1,102 @@
 const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-const cors = require("cors")({ origin: true });
 
 const { MercadoPagoConfig, Preference } = require("mercadopago");
 
-admin.initializeApp();
 
 const client = new MercadoPagoConfig({
+
   accessToken: "APP_USR-8741860237780270-051413-7c1cc91831bd8e11191a64d5313c3dbb-721433387"
+
 });
 
-exports.criarPagamento = functions.https.onRequest((req, res) => {
 
-  cors(req, res, async () => {
+exports.criarPagamento = functions.https.onRequest(async (req, res) => {
 
-    try {
+  res.set("Access-Control-Allow-Origin", "*");
 
-      const {
-        nome,
-        telefone,
-        cidade,
-        moto,
-        observacoes
-      } = req.body;
+  res.set("Access-Control-Allow-Methods", "GET, POST");
 
-      const preference = new Preference(client);
+  res.set("Access-Control-Allow-Headers", "Content-Type");
 
-      const response = await preference.create({
 
-        body: {
+  if (req.method === "OPTIONS") {
 
-          items: [
-            {
-              title: "Inscrição Trilhão de Pojuca",
-              quantity: 1,
-              currency_id: "BRL",
-              unit_price: 60
-            }
-          ],
+    return res.status(200).send({});
 
-          payer: {
-            name: nome
-          },
+  }
 
-          metadata: {
-            nome,
-            telefone,
-            cidade,
-            moto,
-            observacoes
-          },
+  try {
 
-          back_urls: {
-            success: "https://trilheirosdepojuca.github.io/trilhao-pojuca/",
-            failure: "https://trilheirosdepojuca.github.io/trilhao-pojuca/"
-          },
+    const {
 
-          auto_return: "approved"
+      nome,
+      telefone,
+      cidade,
+      moto,
+      observacoes
 
-        }
+    } = req.body;
 
-      });
 
-      res.status(200).send({
-        url: response.init_point
-      });
+    const preference = new Preference(client);
 
-    } catch (error) {
 
-      console.error(error);
+    const response = await preference.create({
 
-      res.status(500).send(error);
+      body: {
 
-    }
+        items: [
 
-  });
+          {
+            title: `Inscrição Trilhão - ${nome}`,
+            quantity: 1,
+            currency_id: "BRL",
+            unit_price: 60
+          }
+
+        ],
+
+        payer: {
+
+          name: nome
+
+        },
+
+        external_reference: telefone,
+
+        back_urls: {
+
+          success: "https://trilheirosdepojuca.github.io/trilhao-pojuca/",
+
+          failure: "https://trilheirosdepojuca.github.io/trilhao-pojuca/",
+
+          pending: "https://trilheirosdepojuca.github.io/trilhao-pojuca/"
+
+        },
+
+        auto_return: "approved"
+
+      }
+
+    });
+
+
+    res.status(200).json({
+
+      url: response.init_point
+
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+
+      error: error.message
+
+    });
+
+  }
 
 });
