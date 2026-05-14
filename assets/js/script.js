@@ -1,66 +1,41 @@
-// DATA DO EVENTO
-const countdown = () => {
+const eventDate = new Date('2026-09-06T09:00:00').getTime();
 
-  const now = new Date().getTime();
+function updateCountdown(){
 
-  const distance = eventDate - now;
+    const now = new Date().getTime();
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const distance = eventDate - now;
 
-  const countdownEl = document.getElementById('countdown');
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  if(countdownEl){
-    countdownEl.innerHTML = `
-      <div class="count-box">
-        <span>${days}</span>
-        <small>Dias</small>
-      </div>
+    const countdown = document.getElementById('countdown');
 
-      <div class="count-box">
-        <span>${hours}</span>
-        <small>Horas</small>
-      </div>
+    countdown.innerHTML = `
+        <div class="count-box">
+            <span>${days}</span>
+            <small>Dias</small>
+        </div>
 
-      <div class="count-box">
-        <span>${minutes}</span>
-        <small>Min</small>
-      </div>
+        <div class="count-box">
+            <span>${hours}</span>
+            <small>Horas</small>
+        </div>
 
-      <div class="count-box">
-        <span>${seconds}</span>
-        <small>Seg</small>
-      </div>
+        <div class="count-box">
+            <span>${minutes}</span>
+            <small>Min</small>
+        </div>
+
+        <div class="count-box">
+            <span>${seconds}</span>
+            <small>Seg</small>
+        </div>
     `;
-  }
-
-};
-
-setInterval(countdown, 1000);
-
-countdown();
-
-
-// LISTA EXEMPLO DE INSCRITOS
-const inscritos = [
-  'Alex Lorenzetti',
-  'Halisson Hevelon',
-  'Júnior Trilheiro',
-  'Nego Lama',
-  'Biriu',
-  'Ojuara'
-];
-
-const lista = document.getElementById('lista-inscritos');
-
-if(lista){
-  inscritos.forEach(nome => {
-    const li = document.createElement('li');
-    li.innerText = nome;
-    lista.appendChild(li);
-  });
 }
 
-console.log('Trilhão de Pojuca carregado com sucesso!');
+setInterval(updateCountdown,1000);
+
+updateCountdown();
