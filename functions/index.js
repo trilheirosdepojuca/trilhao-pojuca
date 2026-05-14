@@ -12,18 +12,30 @@ const client = new MercadoPagoConfig({
 
 exports.criarPagamento = functions.https.onRequest(async (req, res) => {
 
-  res.set("Access-Control-Allow-Origin", "*");
+  // CORS
+  res.set(
+    "Access-Control-Allow-Origin",
+    "https://trilheirosdepojuca.github.io"
+  );
 
-  res.set("Access-Control-Allow-Methods", "GET, POST");
+  res.set(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS"
+  );
 
-  res.set("Access-Control-Allow-Headers", "Content-Type");
+  res.set(
+    "Access-Control-Allow-Headers",
+    "Content-Type"
+  );
 
 
+  // PREFLIGHT
   if (req.method === "OPTIONS") {
 
-    return res.status(200).send({});
+    return res.status(204).send("");
 
   }
+
 
   try {
 
