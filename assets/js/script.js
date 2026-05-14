@@ -19,38 +19,54 @@ telefoneInput.addEventListener("input", (e) => {
 
 const form = document.getElementById("form-inscricao");
 
+
 form.addEventListener("submit", async (e) => {
 
   e.preventDefault();
 
   const nome = document.getElementById("nome").value;
+
   const telefone = document.getElementById("telefone").value;
+
   const cidade = document.getElementById("cidade").value;
+
   const moto = document.getElementById("moto").value;
+
   const observacoes = document.getElementById("observacoes").value;
+
 
   try {
 
     const response = await fetch(
+
       "https://criarpagamento-c6ftk5nesq-uc.a.run.app",
+
       {
         method: "POST",
+
+        mode: "cors",
 
         headers: {
           "Content-Type": "application/json"
         },
 
         body: JSON.stringify({
+
           nome,
           telefone,
           cidade,
           moto,
           observacoes
+
         })
+
       }
+
     );
 
+
     const data = await response.json();
+
 
     if (data.url) {
 
