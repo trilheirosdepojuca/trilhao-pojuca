@@ -265,4 +265,35 @@ footer{
         padding:30px;
     }
 
+    .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+
+.contact-card{
+    background:#1b1b1b;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    transition:.3s;
+}
+
+.contact-card:hover{
+    transform:translateY(-5px);
+}
+
+.contact-card h3{
+    margin-bottom:15px;
+    color:#ff7b00;
+}
+
+.contact-card a{
+    color:#00ff99;
+    text-decoration:none;
+    font-weight:700;
+    font-size:18px;
+}
+
 }
