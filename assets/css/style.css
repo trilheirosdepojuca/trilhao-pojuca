@@ -243,14 +243,14 @@ textarea{
 
 .inscritos-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
 }
 
 .piloto-card{
     background:linear-gradient(180deg,#1b1b1b,#121212);
-    border-radius:22px;
-    padding:25px;
+    border-radius:18px;
+    padding:15px;
     border:1px solid rgba(255,255,255,.06);
     transition:.3s;
     overflow:hidden;
