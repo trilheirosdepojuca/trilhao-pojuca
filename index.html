@@ -120,7 +120,7 @@
         </p>
 
         <div class="pix-key">
-          Faça o pagamento via PIX utilizando o botão de pagamento abaixo:
+          dagloria@gmail.com
         </div>
 
         <p class="pix-info">
@@ -128,7 +128,7 @@
         </p>
 
         <a
-          href="https://mpago.la/12YDSwq"
+          href="https://mpago.la/SEULINK"
           target="_blank"
           class="btn-pay"
         >
@@ -152,11 +152,7 @@
 
         <h2>📝 Fazer Inscrição</h2>
 
-        <form action="https://formsubmit.co/dagloria@gmail.com" method="POST">
-
-          <input type="hidden" name="_subject" value="Nova inscrição - Trilhão de Pojuca">
-
-          <input type="hidden" name="_captcha" value="false">
+        <form>
 
           <input type="text" name="nome" placeholder="Nome Completo" required>
 
@@ -181,71 +177,168 @@
   </section>
 
 
-  <!-- CONTATO -->
+  <!-- PATROCINADORES -->
 
-<section class="contact-section">
+  <section class="sponsors-section">
 
-  <div class="container">
+    <div class="container">
 
-    <h2>📞 Contato</h2>
+      <h2>🤝 Patrocinadores</h2>
 
-    <div class="contact-grid">
+      <div class="sponsors-grid">
 
-      <div class="contact-card">
-        <h3>Alex Lorenzetti</h3>
+        <div class="sponsor-card">
+          <img src="assets/img/patrocinador1.png">
+        </div>
 
-        <a href="https://wa.me/5571996285296" target="_blank">
-          📱 (71) 99628-5296
-        </a>
-      </div>
+        <div class="sponsor-card">
+          <img src="assets/img/patrocinador2.png">
+        </div>
 
-      <div class="contact-card">
-        <h3>Halisson Hevelon</h3>
+        <div class="sponsor-card">
+          <img src="assets/img/patrocinador3.png">
+        </div>
 
-        <a href="https://wa.me/5571996348539" target="_blank">
-          📱 (71) 99634-8539
-        </a>
-      </div>
+        <div class="sponsor-card">
+          <img src="assets/img/patrocinador4.png">
+        </div>
 
-      <div class="contact-card">
-        <h3>Marlon Lima</h3>
-
-        <a href="https://wa.me/5571999110563" target="_blank">
-          📱 (71) 99911-0563
-        </a>
       </div>
 
     </div>
 
-  </div>
+  </section>
 
-</section>
+
+  <!-- CONTATO -->
+
+  <section class="contact-section">
+
+    <div class="container">
+
+      <h2>📞 Contato</h2>
+
+      <div class="contact-grid">
+
+        <div class="contact-card">
+
+          <h3>Alex Lorenzetti</h3>
+
+          <a href="https://wa.me/5571996285296" target="_blank">
+            📱 (71) 99628-5296
+          </a>
+
+        </div>
+
+        <div class="contact-card">
+
+          <h3>Halisson Hevelon</h3>
+
+          <a href="https://wa.me/5571996348539" target="_blank">
+            📱 (71) 99634-8539
+          </a>
+
+        </div>
+
+        <div class="contact-card">
+
+          <h3>Marlon Lima</h3>
+
+          <a href="https://wa.me/5571999110563" target="_blank">
+            📱 (71) 99911-0563
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
 
 
   <footer>
     © 2026 - Trilheiros de Pojuca 🏍️
   </footer>
 
+
   <script src="assets/js/script.js"></script>
+
+
+  <!-- FIREBASE -->
 
   <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyD6jRDmgx2yWgR0xHGC65ML_si7LEihPIU",
-  authDomain: "trilhao-pojuca.firebaseapp.com",
-  projectId: "trilhao-pojuca",
-  storageBucket: "trilhao-pojuca.firebasestorage.app",
-  messagingSenderId: "288280670772",
-  appId: "1:288280670772:web:639c45cb40d96b443bd061"
-};
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
-const app = initializeApp(firebaseConfig);
 
-console.log("Firebase conectado com sucesso!");
+    const firebaseConfig = {
+      apiKey: "AIzaSyD6jRDmgx2yWgR0xHGC65ML_si7LEihPIU",
+      authDomain: "trilhao-pojuca.firebaseapp.com",
+      projectId: "trilhao-pojuca",
+      storageBucket: "trilhao-pojuca.firebasestorage.app",
+      messagingSenderId: "288280670772",
+      appId: "1:288280670772:web:639c45cb40d96b443bd061"
+    };
 
-</script>
+
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", async (e) => {
+
+      e.preventDefault();
+
+      const nome = form.nome.value;
+      const telefone = form.telefone.value;
+      const cidade = form.cidade.value;
+      const moto = form.moto.value;
+      const observacoes = form.observacoes.value;
+
+      try {
+
+        await addDoc(collection(db, "inscritos"), {
+
+          nome,
+          telefone,
+          cidade,
+          moto,
+          observacoes,
+
+          status: "Pendente",
+
+          pagamento: "PIX",
+
+          createdAt: serverTimestamp()
+
+        });
+
+        alert("Inscrição enviada com sucesso! 🔥");
+
+        form.reset();
+
+      } catch (error) {
+
+        console.error(error);
+
+        alert("Erro ao enviar inscrição.");
+
+      }
+
+    });
+
+  </script>
 
 </body>
 
