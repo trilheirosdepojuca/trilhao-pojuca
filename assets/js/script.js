@@ -1,41 +1,73 @@
-const eventDate = new Date('2026-09-06T09:00:00').getTime();
+const telefoneInput = document.getElementById("telefone");
 
-function updateCountdown(){
+telefoneInput.addEventListener("input", (e) => {
 
-    const now = new Date().getTime();
+  let value = e.target.value;
 
-    const distance = eventDate - now;
+  value = value.replace(/\D/g, "");
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
 
-    const countdown = document.getElementById('countdown');
+  value = value.replace(/(\d{5})(\d)/, "$1-$2");
 
-    countdown.innerHTML = `
-        <div class="count-box">
-            <span>${days}</span>
-            <small>Dias</small>
-        </div>
+  value = value.replace(/(-\d{4})\d+?$/, "$1");
 
-        <div class="count-box">
-            <span>${hours}</span>
-            <small>Horas</small>
-        </div>
+  e.target.value = value;
 
-        <div class="count-box">
-            <span>${minutes}</span>
-            <small>Min</small>
-        </div>
+});
 
-        <div class="count-box">
-            <span>${seconds}</span>
-            <small>Seg</small>
-        </div>
-    `;
-}
 
-setInterval(updateCountdown,1000);
+const form = document.getElementById("form-inscricao");
 
-updateCountdown();
+form.addEventListener("submit", async (e) => {
+
+  e.preventDefault();
+
+  const nome = document.getElementById("nome").value;
+  const telefone = document.getElementById("telefone").value;
+  const cidade = document.getElementById("cidade").value;
+  const moto = document.getElementById("moto").value;
+  const observacoes = document.getElementById("observacoes").value;
+
+  try {
+
+    const response = await fetch(
+      "https://criarpagamento-c6ftk5nesq-uc.a.run.app",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          nome,
+          telefone,
+          cidade,
+          moto,
+          observacoes
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.url) {
+
+      window.location.href = data.url;
+
+    } else {
+
+      alert("Erro ao gerar pagamento.");
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert("Erro na conexão.");
+
+  }
+
+});
