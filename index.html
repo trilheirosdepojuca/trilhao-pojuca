@@ -228,6 +228,25 @@
 
   <script src="assets/js/script.js"></script>
 
+  <script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD6jRDmgx2yWgR0xHGC65ML_si7LEihPIU",
+  authDomain: "trilhao-pojuca.firebaseapp.com",
+  projectId: "trilhao-pojuca",
+  storageBucket: "trilhao-pojuca.firebasestorage.app",
+  messagingSenderId: "288280670772",
+  appId: "1:288280670772:web:639c45cb40d96b443bd061"
+};
+
+const app = initializeApp(firebaseConfig);
+
+console.log("Firebase conectado com sucesso!");
+
+</script>
+
 </body>
 
 </html>
