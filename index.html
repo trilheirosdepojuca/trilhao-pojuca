@@ -1,3 +1,4 @@
+```html id="k7n2vx"
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -177,6 +178,23 @@
   </section>
 
 
+  <!-- INSCRITOS -->
+
+  <section class="inscritos-section">
+
+    <div class="container">
+
+      <h2>🔥 Trilheiros Inscritos</h2>
+
+      <div id="lista-inscritos" class="inscritos-grid">
+
+      </div>
+
+    </div>
+
+  </section>
+
+
   <!-- PATROCINADORES -->
 
   <section class="sponsors-section">
@@ -275,7 +293,8 @@
       getFirestore,
       collection,
       addDoc,
-      serverTimestamp
+      serverTimestamp,
+      onSnapshot
     } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 
@@ -293,6 +312,45 @@
 
     const db = getFirestore(app);
 
+
+    // LISTA INSCRITOS
+
+    const lista = document.getElementById("lista-inscritos");
+
+    onSnapshot(collection(db, "inscritos"), (snapshot) => {
+
+      lista.innerHTML = "";
+
+      snapshot.forEach((doc) => {
+
+        const data = doc.data();
+
+        lista.innerHTML += `
+
+          <div class="inscrito-card">
+
+            <h3>${data.nome}</h3>
+
+            <p>📍 ${data.cidade}</p>
+
+            <p>🏍️ ${data.moto}</p>
+
+            <p>📞 ${data.telefone}</p>
+
+            <span class="status ${data.status === 'Pago' ? 'pago' : 'pendente'}">
+              ${data.status}
+            </span>
+
+          </div>
+
+        `;
+
+      });
+
+    });
+
+
+    // FORMULÁRIO
 
     const form = document.querySelector("form");
 
@@ -343,3 +401,4 @@
 </body>
 
 </html>
+```
