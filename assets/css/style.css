@@ -137,6 +137,11 @@ button:hover{
     text-align:center;
 }
 
+.inscritos-section h2,
+.ranking-cidades h3{
+    text-shadow:0 0 20px rgba(255,120,0,.35);
+}
+
 /* PREÇO */
 
 .price{
@@ -239,8 +244,9 @@ textarea{
 
 .inscritos-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,320px));
+    justify-content:center;
+    gap:25px;
     margin-top:40px;
 }
 
@@ -470,6 +476,8 @@ footer{
     text-align:center;
     border:1px solid rgba(255,255,255,.06);
     transition:.3s;
+    max-width:320px;
+    margin:auto;
 }
 
 .ranking-card:hover{
