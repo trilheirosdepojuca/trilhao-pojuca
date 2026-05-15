@@ -411,53 +411,9 @@ footer{
     color:#777;
 }
 
-/* RESPONSIVO */
+/* STATUS */
 
-@media(max-width:768px){
-
-    section{
-        padding:60px 5%;
-    }
-
-    .logo{
-        width:260px;
-    }
-
-    .hero-content p{
-        font-size:18px;
-    }
-
-    .price{
-        font-size:45px;
-    }
-
-    .price-card,
-    .pix-box,
-    .form-box{
-        padding:30px;
-    }
-
-    .piloto-topo{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .countdown{
-        gap:10px;
-    }
-
-    .count-box{
-        min-width:90px;
-        padding:15px;
-    }
-
-    .count-box span{
-        font-size:30px;
-    }
-
-    /* STATUS */
-
-.status {
+.status{
     position:absolute;
     top:15px;
     right:15px;
@@ -467,13 +423,13 @@ footer{
     font-weight:bold;
 }
 
-.status.pago {
-    background:#00b894;
+.status.pago{
+    background:#00c853;
     color:white;
 }
 
-.status.pendente {
-    background:#d63031;
+.status.pendente{
+    background:#ff2d2d;
     color:white;
 }
 
@@ -504,14 +460,20 @@ footer{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
+    margin-top:30px;
 }
 
 .ranking-card{
-    background:#161616;
-    border-radius:18px;
-    padding:20px;
+    background:linear-gradient(180deg,#1b1b1b,#121212);
+    border-radius:20px;
+    padding:25px;
     text-align:center;
-    border:1px solid rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.06);
+    transition:.3s;
+}
+
+.ranking-card:hover{
+    transform:translateY(-5px);
 }
 
 .ranking-card h4{
@@ -524,6 +486,11 @@ footer{
     color:#ff6600;
     font-size:30px;
     font-weight:bold;
+}
+
+.ranking-card p{
+    color:#aaa;
+    margin-top:5px;
 }
 
 /* RESPONSIVO */
@@ -570,7 +537,12 @@ footer{
         font-size:30px;
     }
 
-}
+    .ranking-grid{
+        grid-template-columns:1fr;
+    }
+
+    .inscritos-grid{
+        grid-template-columns:1fr;
+    }
 
 }
-
