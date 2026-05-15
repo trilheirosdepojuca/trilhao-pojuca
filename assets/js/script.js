@@ -87,3 +87,40 @@ form.addEventListener("submit", async (e) => {
   }
 
 });
+
+const db = firebase.firestore();
+
+async function carregarInscritos() {
+
+  const lista = document.getElementById("lista-inscritos");
+
+  lista.innerHTML = "";
+
+  const snapshot = await db
+    .collection("inscritos")
+    .orderBy("createdAt", "desc")
+    .get();
+
+  snapshot.forEach((doc) => {
+
+    const inscrito = doc.data();
+
+    lista.innerHTML += `
+
+      <div class="inscrito-card">
+
+        <h3>${inscrito.nome}</h3>
+
+        <p>${inscrito.cidade}</p>
+
+        <span>${inscrito.moto}</span>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+carregarInscritos();
