@@ -455,4 +455,122 @@ footer{
         font-size:30px;
     }
 
+    /* STATUS */
+
+.status {
+    position:absolute;
+    top:15px;
+    right:15px;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:bold;
 }
+
+.status.pago {
+    background:#00b894;
+    color:white;
+}
+
+.status.pendente {
+    background:#d63031;
+    color:white;
+}
+
+/* TOTAL INSCRITOS */
+
+.total-inscritos{
+    text-align:center;
+    margin-top:15px;
+    color:#ff6600;
+    font-size:24px;
+    font-weight:bold;
+}
+
+/* RANKING */
+
+.ranking-cidades{
+    margin-top:60px;
+}
+
+.ranking-cidades h3{
+    color:#ff6600;
+    text-align:center;
+    margin-bottom:25px;
+    font-size:28px;
+}
+
+.ranking-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.ranking-card{
+    background:#161616;
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.ranking-card h4{
+    color:white;
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.ranking-card span{
+    color:#ff6600;
+    font-size:30px;
+    font-weight:bold;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    section{
+        padding:60px 5%;
+    }
+
+    .logo{
+        width:260px;
+    }
+
+    .hero-content p{
+        font-size:18px;
+    }
+
+    .price{
+        font-size:45px;
+    }
+
+    .price-card,
+    .pix-box,
+    .form-box{
+        padding:30px;
+    }
+
+    .piloto-topo{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .countdown{
+        gap:10px;
+    }
+
+    .count-box{
+        min-width:90px;
+        padding:15px;
+    }
+
+    .count-box span{
+        font-size:30px;
+    }
+
+}
+
+}
+

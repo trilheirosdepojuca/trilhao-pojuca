@@ -70,7 +70,7 @@ form.addEventListener("submit", async (e) => {
 
     if (data.url) {
 
-      window.location.href = data.url;
+      window.open(data.url, "_blank");
 
     } else {
 
@@ -94,26 +94,78 @@ async function carregarInscritos() {
 
   const lista = document.getElementById("lista-inscritos");
 
+  const total = document.getElementById("total-inscritos");
+
+  const ranking = document.getElementById("ranking-cidades");
+
   lista.innerHTML = "";
+
+  ranking.innerHTML = "";
+
 
   const snapshot = await db
     .collection("inscritos")
     .orderBy("createdAt", "desc")
     .get();
 
+
+  total.innerHTML =
+    `🔥 ${snapshot.size} Trilheiros Confirmados`;
+
+
+  const cidades = {};
+
+
   snapshot.forEach((doc) => {
 
     const inscrito = doc.data();
 
+
+    if (!cidades[inscrito.cidade]) {
+
+      cidades[inscrito.cidade] = 0;
+
+    }
+
+
+    cidades[inscrito.cidade]++;
+
+
     lista.innerHTML += `
 
-      <div class="inscrito-card">
+      <div class="piloto-card">
 
-        <h3>${inscrito.nome}</h3>
+        <div class="status pago">
 
-        <p>${inscrito.cidade}</p>
+          ${inscrito.status}
 
-        <span>${inscrito.moto}</span>
+        </div>
+
+        <div class="piloto-topo">
+
+          <div class="piloto-avatar">
+            🏍️
+          </div>
+
+          <div class="piloto-info">
+
+            <h3>${inscrito.nome}</h3>
+
+            <span>${inscrito.cidade}</span>
+
+          </div>
+
+        </div>
+
+        <div class="piloto-body">
+
+          <div class="piloto-item">
+
+            🏍️ ${inscrito.moto}
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -121,6 +173,30 @@ async function carregarInscritos() {
 
   });
 
+
+  Object.entries(cidades)
+
+    .sort((a, b) => b[1] - a[1])
+
+    .forEach(([cidade, quantidade]) => {
+
+      ranking.innerHTML += `
+
+        <div class="ranking-card">
+
+          <h4>${cidade}</h4>
+
+          <span>${quantidade}</span>
+
+          <p>pilotos</p>
+
+        </div>
+
+      `;
+
+    });
+
 }
+
 
 carregarInscritos();
