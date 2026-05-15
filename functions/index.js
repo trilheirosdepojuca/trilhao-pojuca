@@ -20,7 +20,7 @@ const db = admin.firestore();
 
 const client = new MercadoPagoConfig({
 
-  accessToken: "SEU_ACCESS_TOKEN_MP"
+  accessToken: "APP_USR-8741860237780270-051413-7c1cc91831bd8e11191a64d5313c3dbb-721433387"
 
 });
 
