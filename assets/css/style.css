@@ -249,7 +249,7 @@ textarea{
     border-radius:20px;
     padding:18px;
     border:1px solid rgba(255,255,255,.06);
-    transition:.3s;
+    transition:.35s ease;
     overflow:hidden;
     position:relative;
 }
@@ -265,8 +265,8 @@ textarea{
 }
 
 .piloto-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 15px 35px rgba(0,0,0,.4);
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 20px 40px rgba(255,120,0,.15);
 }
 
 .piloto-topo{
@@ -545,4 +545,10 @@ footer{
         grid-template-columns:1fr;
     }
 
+}
+
+.piloto-info h3{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
