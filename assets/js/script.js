@@ -135,7 +135,7 @@ async function carregarInscritos() {
 
       <div class="piloto-card">
 
-        <div class="status pago">
+        <div class="status ${inscrito.status.toLowerCase()}">
 
           ${inscrito.status}
 

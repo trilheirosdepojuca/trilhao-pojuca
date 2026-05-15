@@ -552,3 +552,18 @@ footer{
     text-overflow:ellipsis;
     white-space:nowrap;
 }
+
+.piloto-info h3{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    max-width:220px;
+}
+
+.piloto-card{
+    backdrop-filter:blur(10px);
+}
+
+.ranking-card{
+    backdrop-filter:blur(10px);
+}
