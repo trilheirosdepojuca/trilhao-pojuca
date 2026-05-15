@@ -236,3 +236,73 @@ async function carregarCidades() {
 }
 
 carregarCidades();
+
+// ========================================
+// CONTAGEM REGRESSIVA
+// ========================================
+
+const countdown = document.getElementById("countdown");
+
+const dataEvento = new Date("2026-09-06T08:00:00").getTime();
+
+function atualizarContagem() {
+
+  const agora = new Date().getTime();
+
+  const distancia = dataEvento - agora;
+
+  if (distancia < 0) {
+
+    countdown.innerHTML = "🔥 O TRILHÃO COMEÇOU!";
+
+    return;
+
+  }
+
+  const dias = Math.floor(
+    distancia / (1000 * 60 * 60 * 24)
+  );
+
+  const horas = Math.floor(
+    (distancia % (1000 * 60 * 60 * 24)) /
+    (1000 * 60 * 60)
+  );
+
+  const minutos = Math.floor(
+    (distancia % (1000 * 60 * 60)) /
+    (1000 * 60)
+  );
+
+  const segundos = Math.floor(
+    (distancia % (1000 * 60)) / 1000
+  );
+
+  countdown.innerHTML = `
+
+    <div class="time-box">
+      <span>${dias}</span>
+      <small>Dias</small>
+    </div>
+
+    <div class="time-box">
+      <span>${horas}</span>
+      <small>Horas</small>
+    </div>
+
+    <div class="time-box">
+      <span>${minutos}</span>
+      <small>Min</small>
+    </div>
+
+    <div class="time-box">
+      <span>${segundos}</span>
+      <small>Seg</small>
+    </div>
+
+  `;
+
+}
+
+atualizarContagem();
+
+setInterval(atualizarContagem, 1000);
