@@ -200,3 +200,39 @@ async function carregarInscritos() {
 
 
 carregarInscritos();
+
+async function carregarCidades() {
+
+  const lista = document.getElementById("lista-cidades");
+
+  try {
+
+    const response = await fetch(
+      "https://servicodados.ibge.gov.br/api/v1/localidades/municipios"
+    );
+
+    const cidades = await response.json();
+
+    cidades
+      .sort((a, b) =>
+        a.nome.localeCompare(b.nome)
+      )
+      .forEach((cidade) => {
+
+        const option = document.createElement("option");
+
+        option.value = cidade.nome;
+
+        lista.appendChild(option);
+
+      });
+
+  } catch (error) {
+
+    console.error("Erro ao carregar cidades:", error);
+
+  }
+
+}
+
+carregarCidades();
