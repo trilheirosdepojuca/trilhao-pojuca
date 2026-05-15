@@ -14,10 +14,6 @@ admin.initializeApp();
 const db = admin.firestore();
 
 
-// ==========================================
-// MERCADO PAGO
-// ==========================================
-
 const client = new MercadoPagoConfig({
 
   accessToken: "APP_USR-8741860237780270-051413-7c1cc91831bd8e11191a64d5313c3dbb-721433387"
@@ -88,7 +84,9 @@ exports.criarPagamento = functions.https.onRequest(async (req, res) => {
 
         payer: {
 
-          name: nome
+          name: nome,
+
+          email: "comprador@email.com"
 
         },
 
@@ -137,7 +135,7 @@ exports.criarPagamento = functions.https.onRequest(async (req, res) => {
 
 
 // ==========================================
-// WEBHOOK MERCADO PAGO
+// WEBHOOK
 // ==========================================
 
 exports.webhookMercadoPago = functions.https.onRequest(async (req, res) => {
@@ -156,6 +154,7 @@ exports.webhookMercadoPago = functions.https.onRequest(async (req, res) => {
 
     const payment = new Payment(client);
 
+
     const paymentData = await payment.get({
 
       id: paymentId
@@ -163,7 +162,7 @@ exports.webhookMercadoPago = functions.https.onRequest(async (req, res) => {
     });
 
 
-    const data = paymentData;
+    const data = paymentData.response;
 
 
     if (data.status === "approved") {
@@ -194,7 +193,7 @@ exports.webhookMercadoPago = functions.https.onRequest(async (req, res) => {
       });
 
 
-      console.log("Pagamento aprovado e salvo!");
+      console.log("Pagamento aprovado!");
 
     }
 
